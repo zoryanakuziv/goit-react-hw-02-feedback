@@ -3,7 +3,8 @@ import { Component } from "react";
 import Statistics from "../statistics/Statistics";
 import FeedbackOptions from "../feedbackOptions/FeedbackOptions";
 import Section from "../section/SectionTitle";
-import Notification from "../notification/Notification";
+
+import { Container } from "../App/App.styled";
 
 class App extends Component {
   state = {
@@ -28,13 +29,13 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <Container>
         <Section title=" Please leave feedback">
           <FeedbackOptions
             onLeaveFeedback={this.handleFeedback}
             options={this.state}
           />
-          <Notification message="There is no feedback"></Notification>
+
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -43,7 +44,7 @@ class App extends Component {
             positivePercentage={this.countPositiveFeedbackPercentage()}
           />
         </Section>
-      </>
+      </Container>
     );
   }
 }

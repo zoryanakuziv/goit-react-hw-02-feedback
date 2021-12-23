@@ -1,17 +1,22 @@
 import React from "react";
+import Notification from "../notification/Notification";
+import { Title, StatiscicsList, Item } from "./Statistics.styled";
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <>
-      <h3>Statistics</h3>
+      <Title>Statistics</Title>
       {total > 0 && (
-        <div>
-          <li>Good:{good}</li>
-          <li>Neutral:{neutral}</li>
-          <li>Bad:{bad}</li>
-          <p>Total:{total}</p>
-          <p>Positive feedback: {positivePercentage}%</p>
-        </div>
+        <StatiscicsList>
+          <Item>Good:{good}</Item>
+          <Item>Neutral:{neutral}</Item>
+          <Item>Bad:{bad}</Item>
+          <Item>Total:{total}</Item>
+          <Item>Positive feedback: {positivePercentage}%</Item>
+        </StatiscicsList>
+      )}
+      {total === 0 && (
+        <Notification message="There is no feedback"></Notification>
       )}
     </>
   );
